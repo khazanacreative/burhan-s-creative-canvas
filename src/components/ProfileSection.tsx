@@ -3,7 +3,7 @@ import profilePhoto from "@/assets/profile-photo.jpg";
 
 const ProfileSection = () => {
   return (
-    <section className="snap-section gradient-bg-1 flex items-center justify-center p-4 md:p-8">
+    <section className="snap-section gradient-bg-1 flex items-center justify-center p-4 md:p-8 pt-24 md:pt-32">
       <div className="container max-w-6xl mx-auto">
         <div className="glass-morphism rounded-3xl p-6 md:p-12 animate-scale-in">
           <div className="text-center mb-8">
