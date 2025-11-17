@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin, Calendar, Heart, User } from "lucide-react";
+import profilePhoto from "@/assets/profile-photo.jpg";
 
 const ProfileSection = () => {
   return (
@@ -7,8 +8,12 @@ const ProfileSection = () => {
         <div className="glass-morphism rounded-3xl p-6 md:p-12 animate-scale-in">
           <div className="text-center mb-8">
             <div className="inline-block mb-6">
-              <div className="w-32 h-32 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center animate-glow-pulse">
-                <User className="w-16 h-16 text-background" />
+              <div className="w-40 h-40 rounded-full border-4 border-primary overflow-hidden animate-glow-pulse">
+                <img 
+                  src={profilePhoto} 
+                  alt="Mochamad Burhan Islami" 
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-4 text-glow">

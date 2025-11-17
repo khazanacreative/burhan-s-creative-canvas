@@ -47,10 +47,10 @@ const experiences = [
 
 const ExperienceSection = () => {
   return (
-    <section className="snap-section gradient-bg-2 flex items-center justify-center p-4 md:p-8 overflow-hidden">
-      <div className="container max-w-6xl mx-auto">
-        <div className="glass-morphism rounded-3xl p-6 md:p-12 max-h-[85vh] overflow-y-auto">
-          <div className="text-center mb-8">
+    <section className="snap-section gradient-bg-2 flex items-center justify-center p-4 md:p-8">
+      <div className="container max-w-full mx-auto h-full flex flex-col">
+        <div className="glass-morphism rounded-3xl p-6 md:p-8 flex-1 overflow-hidden flex flex-col">
+          <div className="text-center mb-6 flex-shrink-0">
             <h2 className="text-3xl md:text-5xl font-bold mb-3 text-glow">
               Working Experience
             </h2>
@@ -59,35 +59,37 @@ const ExperienceSection = () => {
             </p>
           </div>
 
-          <div className="space-y-6">
-            {experiences.map((exp, index) => (
-              <div
-                key={index}
-                className="p-6 rounded-2xl bg-background/30 hover:bg-background/40 transition-all duration-300 animate-fade-in-up border border-primary/10"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-xl bg-primary/20">
-                    <Briefcase className="w-6 h-6 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
-                      <h3 className="text-xl font-bold">{exp.company}</h3>
-                      <span className="text-sm text-primary font-medium">
-                        {exp.period}
-                      </span>
+          <div className="flex-1 horizontal-scroll pb-4">
+            <div className="flex gap-6 min-w-max pr-4">
+              {experiences.map((exp, index) => (
+                <div
+                  key={index}
+                  className="p-6 rounded-2xl bg-background/30 hover:bg-background/40 transition-all duration-300 animate-fade-in-up border border-primary/10 w-96 flex-shrink-0"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="p-3 rounded-xl bg-primary/20 flex-shrink-0">
+                      <Briefcase className="w-6 h-6 text-primary" />
                     </div>
-                    <p className="text-secondary font-semibold mb-1">{exp.role}</p>
-                    <p className="text-sm text-muted-foreground mb-3 italic">
-                      {exp.description}
-                    </p>
-                    <p className="text-sm leading-relaxed text-foreground/80">
-                      {exp.responsibilities}
-                    </p>
+                    <div className="flex-1">
+                      <div className="flex flex-col mb-2">
+                        <h3 className="text-xl font-bold">{exp.company}</h3>
+                        <span className="text-sm text-primary font-medium mt-1">
+                          {exp.period}
+                        </span>
+                      </div>
+                      <p className="text-secondary font-semibold mb-1">{exp.role}</p>
+                      <p className="text-sm text-muted-foreground mb-3 italic">
+                        {exp.description}
+                      </p>
+                      <p className="text-sm leading-relaxed text-foreground/80">
+                        {exp.responsibilities}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
