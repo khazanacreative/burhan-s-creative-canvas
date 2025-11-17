@@ -152,6 +152,7 @@ All colors MUST be HSL.
     height: 100vh;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    scroll-behavior: smooth;
   }
   
   .snap-container::-webkit-scrollbar {
@@ -160,8 +161,10 @@ All colors MUST be HSL.
   
   .snap-section {
     scroll-snap-align: start;
+    scroll-snap-stop: always;
     height: 100vh;
     overflow: hidden;
+    position: relative;
   }
   
   .horizontal-scroll {
