@@ -36,7 +36,36 @@ const PortfolioSection = () => {
             </p>
           </div>
 
-          <div className="flex items-center justify-center gap-2 mb-2">
+          <div ref={scrollRef} className="flex-1 horizontal-scroll pb-1 mb-2 min-h-0">
+            <div className="flex gap-2 sm:gap-3 min-w-max pr-2 items-stretch">
+              {websites.map((website, index) => (
+                <div
+                  key={index}
+                  className="p-3 sm:p-4 md:p-6 rounded-lg sm:rounded-xl bg-background/30 hover:bg-background/40 transition-all duration-300 animate-fade-in border border-primary/10 w-[calc(100vw-3rem)] sm:w-72 md:w-80 flex-shrink-0 h-full flex flex-col justify-between"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="flex-1 flex flex-col items-center justify-center text-center mb-3 sm:mb-4">
+                    <div className="p-2 sm:p-3 rounded-lg bg-primary/20 mb-2 sm:mb-3">
+                      <ExternalLink className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
+                    </div>
+                    <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2">{website.name}</h3>
+                    <p className="text-xs sm:text-sm md:text-base text-muted-foreground break-all">{website.url}</p>
+                  </div>
+                  <Button
+                    className="w-full bg-primary/20 hover:bg-primary/30 text-primary border border-primary/30"
+                    asChild
+                  >
+                    <a href={website.url} target="_blank" rel="noopener noreferrer">
+                      Visit Website
+                      <ExternalLink className="w-4 h-4 ml-2" />
+                    </a>
+                  </Button>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex items-center justify-center gap-2">
             <button
               onClick={() => scroll('left')}
               className="p-1 rounded-md bg-primary/20 hover:bg-primary/30 transition-colors"
@@ -51,51 +80,6 @@ const PortfolioSection = () => {
             >
               <ChevronRight className="w-4 h-4 text-primary" />
             </button>
-          </div>
-
-          <div ref={scrollRef} className="flex-1 horizontal-scroll pb-1 min-h-0">
-            <div className="flex gap-2 sm:gap-3 min-w-max pr-2 items-stretch">
-              {websites.map((site, index) => (
-                <a
-                  key={index}
-                  href={site.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group w-[calc(100vw-3rem)] sm:w-64 md:w-72 flex-shrink-0 h-full"
-                >
-                  <div
-                    className="p-2 sm:p-3 md:p-4 rounded-lg sm:rounded-xl bg-background/30 hover:bg-background/50 transition-all duration-300 border border-primary/10 hover:border-primary/30 animate-fade-in-up h-full flex flex-col justify-between"
-                    style={{ animationDelay: `${index * 0.05}s` }}
-                  >
-                    <div className="min-w-0 flex-1">
-                      <div className="w-full h-20 sm:h-24 md:h-28 mb-2 sm:mb-3 rounded-md bg-background/50 border border-primary/10 flex items-center justify-center">
-                        <img
-                          src={`https://via.placeholder.com/200x100?text=${encodeURIComponent(site.name)}`}
-                          alt={`${site.name} logo`}
-                          className="w-full h-full object-cover rounded-md"
-                        />
-                      </div>
-                      <div className="flex items-start justify-between mb-1 sm:mb-2 gap-1">
-                        <h3 className="text-sm sm:text-base md:text-lg font-bold group-hover:text-primary transition-colors duration-200 break-words flex-1">
-                          {site.name}
-                        </h3>
-                        <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground group-hover:text-primary transition-colors duration-200 flex-shrink-0 mt-0.5" />
-                      </div>
-                      <p className="text-xs sm:text-sm text-muted-foreground mb-2 truncate">
-                        {site.url}
-                      </p>
-                    </div>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="w-full border-primary/30 hover:bg-primary/10 group-hover:border-primary transition-all duration-200 text-xs sm:text-sm h-8"
-                    >
-                      Visit
-                    </Button>
-                  </div>
-                </a>
-              ))}
-            </div>
           </div>
         </div>
       </div>
