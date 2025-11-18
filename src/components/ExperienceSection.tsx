@@ -72,24 +72,7 @@ const ExperienceSection = () => {
             </p>
           </div>
 
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <button
-              onClick={() => scroll('left')}
-              className="p-1 rounded-md bg-primary/20 hover:bg-primary/30 transition-colors"
-              aria-label="Scroll left"
-            >
-              <ChevronLeft className="w-4 h-4 text-primary" />
-            </button>
-            <button
-              onClick={() => scroll('right')}
-              className="p-1 rounded-md bg-primary/20 hover:bg-primary/30 transition-colors"
-              aria-label="Scroll right"
-            >
-              <ChevronRight className="w-4 h-4 text-primary" />
-            </button>
-          </div>
-
-          <div ref={scrollRef} className="flex-1 horizontal-scroll pb-1">
+          <div ref={scrollRef} className="flex-1 horizontal-scroll pb-1 mb-2">
             <div className="flex gap-2 sm:gap-3 min-w-max pr-2 items-stretch">
               {experiences.map((exp, index) => (
                 <div
@@ -122,6 +105,23 @@ const ExperienceSection = () => {
                 </div>
               ))}
             </div>
+          </div>
+
+          <div className="flex items-center justify-center gap-2">
+            <button
+              onClick={() => scroll('left')}
+              className="p-1 rounded-md bg-primary/20 hover:bg-primary/30 transition-colors"
+              aria-label="Scroll left"
+            >
+              <ChevronLeft className="w-4 h-4 text-primary" />
+            </button>
+            <button
+              onClick={() => scroll('right')}
+              className="p-1 rounded-md bg-primary/20 hover:bg-primary/30 transition-colors"
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="w-4 h-4 text-primary" />
+            </button>
           </div>
         </div>
       </div>
