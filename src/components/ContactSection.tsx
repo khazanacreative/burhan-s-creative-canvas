@@ -1,5 +1,4 @@
-import { Mail, Phone, MapPin, Linkedin, Github, Globe } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Mail, Phone, MapPin, Linkedin, Instagram, Facebook } from "lucide-react";
 
 const ContactSection = () => {
   return (
@@ -15,7 +14,7 @@ const ContactSection = () => {
             </p>
           </div>
 
-          <div className="space-y-2 sm:space-y-3 mb-2 sm:mb-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 mb-2 sm:mb-3">
             <a
               href="mailto:mochaburi4@gmail.com"
               className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-md sm:rounded-lg bg-background/30 hover:bg-background/50 transition-all duration-300 border border-primary/10 hover:border-primary/30 group"
@@ -57,35 +56,57 @@ const ContactSection = () => {
                 </p>
               </div>
             </div>
-          </div>
-            
-          <div className="text-center">
-            <p className="text-muted-foreground mb-2 sm:mb-3 text-sm">
-              Available for freelance projects
-            </p>
-            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-2 sm:gap-3">
-              <Button
-                size="sm"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold animate-glow-pulse"
-                asChild
-              >
-                <a href="mailto:mochaburi4@gmail.com">
-                  <Mail className="w-4 h-4 mr-2" />
-                  Email
-                </a>
-              </Button>
-              <Button
-                size="sm"
-                variant="outline"
-                className="border-primary/30 hover:bg-primary/10"
-                asChild
-              >
-                <a href="tel:+6282245767700">
-                  <Phone className="w-4 h-4 mr-2" />
-                  Call
-                </a>
-              </Button>
-            </div>
+
+            <a
+              href="https://www.facebook.com/abu.fazana/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-md sm:rounded-lg bg-background/30 hover:bg-background/50 transition-all duration-300 border border-primary/10 hover:border-primary/30 group"
+            >
+              <div className="p-2 sm:p-3 rounded-md bg-primary/20 group-hover:bg-primary/30 transition-colors duration-200 flex-shrink-0">
+                <Facebook className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-xs sm:text-sm text-muted-foreground">Facebook</p>
+                <p className="text-sm sm:text-base md:text-lg font-semibold group-hover:text-primary transition-colors duration-200 break-words whitespace-normal">
+                  Mochamad Burhan Islami
+                </p>
+              </div>
+            </a>
+
+            <a
+              href="https://www.instagram.com/mocha.burhan/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-md sm:rounded-lg bg-background/30 hover:bg-background/50 transition-all duration-300 border border-primary/10 hover:border-primary/30 group"
+            >
+              <div className="p-2 sm:p-3 rounded-md bg-secondary/20 group-hover:bg-secondary/30 transition-colors duration-200 flex-shrink-0">
+                <Instagram className="w-4 h-4 sm:w-5 sm:h-5 text-secondary" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-xs sm:text-sm text-muted-foreground">Instagram</p>
+                <p className="text-sm sm:text-base md:text-lg font-semibold group-hover:text-secondary transition-colors duration-200 break-words whitespace-normal">
+                  @mocha.burhan
+                </p>
+              </div>
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/mochamad-burhan-islami-8719ba57/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-md sm:rounded-lg bg-background/30 hover:bg-background/50 transition-all duration-300 border border-primary/10 hover:border-primary/30 group"
+            >
+              <div className="p-2 sm:p-3 rounded-md bg-accent/20 group-hover:bg-accent/30 transition-colors duration-200 flex-shrink-0">
+                <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-xs sm:text-sm text-muted-foreground">LinkedIn</p>
+                <p className="text-sm sm:text-base md:text-lg font-semibold group-hover:text-accent transition-colors duration-200 break-words whitespace-normal">
+                  Mochamad Burhan Islami
+                </p>
+              </div>
+            </a>
           </div>
 
           <div className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-primary/20 text-center">

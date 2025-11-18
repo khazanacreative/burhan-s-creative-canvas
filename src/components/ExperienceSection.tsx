@@ -1,4 +1,5 @@
-import { Briefcase } from "lucide-react";
+import { Briefcase, ChevronLeft, ChevronRight } from "lucide-react";
+import { useRef } from "react";
 
 const experiences = [
   {
@@ -46,6 +47,18 @@ const experiences = [
 ];
 
 const ExperienceSection = () => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const scrollAmount = 400;
+      scrollRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section className="snap-section gradient-bg-2 px-3 pt-16 sm:pt-20 pb-[3vh]">
       <div className="w-full h-full flex flex-col items-center justify-center overflow-visible max-h-none">
@@ -59,7 +72,24 @@ const ExperienceSection = () => {
             </p>
           </div>
 
-          <div className="flex-1 horizontal-scroll pb-1">
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <button
+              onClick={() => scroll('left')}
+              className="p-1 rounded-md bg-primary/20 hover:bg-primary/30 transition-colors"
+              aria-label="Scroll left"
+            >
+              <ChevronLeft className="w-4 h-4 text-primary" />
+            </button>
+            <button
+              onClick={() => scroll('right')}
+              className="p-1 rounded-md bg-primary/20 hover:bg-primary/30 transition-colors"
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="w-4 h-4 text-primary" />
+            </button>
+          </div>
+
+          <div ref={scrollRef} className="flex-1 horizontal-scroll pb-1">
             <div className="flex gap-2 sm:gap-3 min-w-max pr-2 items-stretch">
               {experiences.map((exp, index) => (
                 <div
