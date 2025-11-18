@@ -8,25 +8,25 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 220 45% 10%;
+    --background: 240 50% 8%;
     --foreground: 210 40% 98%;
 
-    --card: 220 40% 15%;
+    --card: 240 45% 12%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 220 40% 15%;
+    --popover: 240 45% 12%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 100% 55%;
+    --primary: 260 85% 65%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 215 90% 45%;
+    --secondary: 280 75% 60%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 220 30% 25%;
-    --muted-foreground: 210 30% 75%;
+    --muted: 240 30% 20%;
+    --muted-foreground: 240 20% 75%;
 
-    --accent: 205 100% 50%;
+    --accent: 270 80% 55%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -39,13 +39,13 @@ All colors MUST be HSL.
     --radius: 1rem;
     
     /* Glassmorphism tokens */
-    --glass-bg: 220 40% 18%;
-    --glass-border: 210 50% 35%;
+    --glass-bg: 240 45% 15%;
+    --glass-border: 260 50% 40%;
     
-    /* Gradient tokens - All blue tones */
-    --gradient-start: 220 60% 15%;
-    --gradient-mid: 215 70% 25%;
-    --gradient-end: 210 80% 35%;
+    /* Gradient tokens - Indigo and violet tones */
+    --gradient-start: 240 60% 12%;
+    --gradient-mid: 260 65% 18%;
+    --gradient-end: 280 70% 25%;
     
     /* Animation tokens */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -69,25 +69,25 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 220 45% 10%;
+    --background: 240 50% 8%;
     --foreground: 210 40% 98%;
 
-    --card: 220 40% 15%;
+    --card: 240 45% 12%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 220 40% 15%;
+    --popover: 240 45% 12%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 100% 55%;
+    --primary: 260 85% 65%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 215 90% 45%;
+    --secondary: 280 75% 60%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 220 30% 25%;
-    --muted-foreground: 210 30% 75%;
+    --muted: 240 30% 20%;
+    --muted-foreground: 240 20% 75%;
 
-    --accent: 205 100% 50%;
+    --accent: 270 80% 55%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
@@ -123,23 +123,154 @@ All colors MUST be HSL.
   }
   
   .gradient-bg-1 {
-    background: linear-gradient(135deg, hsl(220 60% 15%), hsl(215 70% 25%));
+    background: linear-gradient(135deg, hsla(240 60% 12% / 0.4), hsla(260 65% 18% / 0.4));
   }
   
   .gradient-bg-2 {
-    background: linear-gradient(135deg, hsl(215 70% 20%), hsl(210 75% 30%));
+    background: linear-gradient(135deg, hsla(250 65% 15% / 0.4), hsla(270 70% 22% / 0.4));
   }
   
   .gradient-bg-3 {
-    background: linear-gradient(135deg, hsl(210 75% 25%), hsl(205 80% 35%));
+    background: linear-gradient(135deg, hsla(260 70% 18% / 0.4), hsla(280 75% 25% / 0.4));
   }
   
   .gradient-bg-4 {
-    background: linear-gradient(135deg, hsl(205 80% 30%), hsl(200 85% 40%));
+    background: linear-gradient(135deg, hsla(270 75% 20% / 0.4), hsla(290 80% 28% / 0.4));
   }
   
   .gradient-bg-5 {
-    background: linear-gradient(135deg, hsl(200 70% 20%), hsl(210 75% 30%));
+    background: linear-gradient(135deg, hsla(245 65% 15% / 0.4), hsla(265 70% 22% / 0.4));
+  }
+  
+  /* Aurora background animation */
+  @keyframes aurora-1 {
+    0%, 100% { 
+      transform: translate(0, 0) scale(1);
+      opacity: 0.4;
+    }
+    33% { 
+      transform: translate(30%, -20%) scale(1.1);
+      opacity: 0.6;
+    }
+    66% { 
+      transform: translate(-20%, 30%) scale(0.95);
+      opacity: 0.5;
+    }
+  }
+  
+  @keyframes aurora-2 {
+    0%, 100% { 
+      transform: translate(0, 0) scale(1);
+      opacity: 0.3;
+    }
+    33% { 
+      transform: translate(-25%, 25%) scale(1.15);
+      opacity: 0.5;
+    }
+    66% { 
+      transform: translate(20%, -15%) scale(0.9);
+      opacity: 0.4;
+    }
+  }
+  
+  @keyframes aurora-3 {
+    0%, 100% { 
+      transform: translate(0, 0) scale(1);
+      opacity: 0.35;
+    }
+    33% { 
+      transform: translate(15%, 30%) scale(1.05);
+      opacity: 0.55;
+    }
+    66% { 
+      transform: translate(-30%, -20%) scale(1.1);
+      opacity: 0.45;
+    }
+  }
+  
+  .aurora-blob {
+    position: absolute;
+    filter: blur(80px);
+    border-radius: 50%;
+    mix-blend-mode: screen;
+    pointer-events: none;
+  }
+  
+  .aurora-blob-1 {
+    width: 60vw;
+    height: 60vh;
+    background: radial-gradient(circle, hsl(260 85% 65% / 0.6) 0%, hsl(260 85% 65% / 0) 70%);
+    animation: aurora-1 20s ease-in-out infinite;
+    top: -20%;
+    left: -10%;
+  }
+  
+  .aurora-blob-2 {
+    width: 50vw;
+    height: 50vh;
+    background: radial-gradient(circle, hsl(280 75% 60% / 0.5) 0%, hsl(280 75% 60% / 0) 70%);
+    animation: aurora-2 25s ease-in-out infinite;
+    bottom: -15%;
+    right: -10%;
+  }
+  
+  .aurora-blob-3 {
+    width: 55vw;
+    height: 55vh;
+    background: radial-gradient(circle, hsl(270 80% 55% / 0.55) 0%, hsl(270 80% 55% / 0) 70%);
+    animation: aurora-3 23s ease-in-out infinite;
+    top: 40%;
+    left: 35%;
+  }
+  
+  /* Wave transition */
+  @keyframes wave-sweep {
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(-100%);
+    }
+  }
+  
+  .wave-transition {
+    display: none !important;
+  }
+
+  .wave-transition.active {
+    display: none !important;
+}
+  @keyframes fade-pulse {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .overlay-transition {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg,
+      hsl(var(--primary) / 0.3) 0%,
+      hsl(var(--secondary) / 0.2) 50%,
+      hsl(var(--accent) / 0.3) 100%
+    );
+    z-index: 99;
+    pointer-events: none;
+    opacity: 0;
+    display: none;
+  }
+
+  .overlay-transition.active {
+    display: none;
   }
   
   .text-glow {
@@ -149,10 +280,14 @@ All colors MUST be HSL.
   .snap-container {
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
+    overflow-x: hidden;
     height: 100vh;
     scrollbar-width: none;
     -ms-overflow-style: none;
     scroll-behavior: smooth;
+    width: 100%;
+    position: relative;
+    z-index: 5;
   }
   
   .snap-container::-webkit-scrollbar {
@@ -165,6 +300,24 @@ All colors MUST be HSL.
     height: 100vh;
     overflow: hidden;
     position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: parallax-in 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  @keyframes parallax-in {
+    0% {
+      opacity: 0;
+      transform: translateY(30px) scale(0.98);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
   }
   
   .horizontal-scroll {
@@ -185,5 +338,112 @@ All colors MUST be HSL.
   .horizontal-scroll::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.3);
     border-radius: 10px;
+  }
+  
+  /* Animated section transitions */
+  .section {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    clip-path: inset(100% 0% 0% 0%);
+    transition: clip-path 0.7s ease-in-out;
+    z-index: 1;
+    display: block;
+  }
+  
+  .section.active {
+    clip-path: inset(0% 0% 0% 0%);
+    z-index: 2;
+  }
+  
+  /* Glass morphism card styling */
+  .glass-morphism {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    height: auto;
+    max-height: none;
+    overflow: hidden;
+    background: rgba(20, 20, 30, 0.5) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  @media (max-height: 700px) {
+    .glass-morphism {
+      max-height: none;
+      padding: 1rem !important;
+    }
+  }
+  
+  /* Enhanced aurora animation - visible movement */
+  @keyframes aurora-float-1 {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+      filter: hue-rotate(0deg) brightness(0.8);
+    }
+    25% {
+      transform: translate(40px, -30px) scale(1.15);
+      filter: hue-rotate(30deg) brightness(1);
+    }
+    50% {
+      transform: translate(-30px, 40px) scale(1.1);
+      filter: hue-rotate(60deg) brightness(0.9);
+    }
+    75% {
+      transform: translate(50px, 20px) scale(1.2);
+      filter: hue-rotate(30deg) brightness(1);
+    }
+  }
+  
+  @keyframes aurora-float-2 {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+      filter: hue-rotate(30deg) brightness(0.7);
+    }
+    25% {
+      transform: translate(-50px, 30px) scale(1.2);
+      filter: hue-rotate(60deg) brightness(0.95);
+    }
+    50% {
+      transform: translate(30px, -40px) scale(1.05);
+      filter: hue-rotate(90deg) brightness(0.85);
+    }
+    75% {
+      transform: translate(-40px, -20px) scale(1.15);
+      filter: hue-rotate(60deg) brightness(1);
+    }
+  }
+  
+  @keyframes aurora-float-3 {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+      filter: hue-rotate(60deg) brightness(0.75);
+    }
+    25% {
+      transform: translate(20px, 50px) scale(1.1);
+      filter: hue-rotate(90deg) brightness(0.9);
+    }
+    50% {
+      transform: translate(-50px, -30px) scale(1.2);
+      filter: hue-rotate(120deg) brightness(1);
+    }
+    75% {
+      transform: translate(35px, -45px) scale(1.05);
+      filter: hue-rotate(90deg) brightness(0.95);
+    }
+  }
+  
+  .aurora-blob-1 {
+    animation: aurora-float-1 30s ease-in-out infinite !important;
+  }
+  
+  .aurora-blob-2 {
+    animation: aurora-float-2 35s ease-in-out infinite !important;
+  }
+  
+  .aurora-blob-3 {
+    animation: aurora-float-3 32s ease-in-out infinite !important;
   }
 }
