@@ -3,12 +3,12 @@ import profilePhoto from "@/assets/profile-photo.jpg";
 
 const ProfileSection = () => {
   return (
-    <section className="snap-section gradient-bg-1 flex items-center justify-center p-4 md:p-8 pt-24 md:pt-32">
-      <div className="container max-w-6xl mx-auto">
-        <div className="glass-morphism rounded-3xl p-6 md:p-12 animate-scale-in">
-          <div className="text-center mb-8">
-            <div className="inline-block mb-6">
-              <div className="w-40 h-40 rounded-full border-4 border-primary overflow-hidden animate-glow-pulse">
+    <section className="snap-section gradient-bg-1 px-3 pt-16 sm:pt-20 pb-[3vh]">
+      <div className="w-full h-full flex items-center justify-center">
+        <div className="glass-morphism rounded-xl p-4 sm:p-6 md:p-8 animate-scale-in w-full max-w-4xl min-h-[60vh] sm:min-h-[65vh] md:min-h-[70vh]">
+          <div className="text-center mb-3 sm:mb-4">
+            <div className="inline-block mb-2 sm:mb-4">
+              <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full border-2 sm:border-3 md:border-4 border-primary overflow-hidden animate-glow-pulse">
                 <img 
                   src={profilePhoto} 
                   alt="Mochamad Burhan Islami" 
@@ -16,74 +16,77 @@ const ProfileSection = () => {
                 />
               </div>
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 text-glow">
+            <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-1 sm:mb-2 md:mb-3 text-glow leading-tight">
               Mochamad Burhan Islami, ST
             </h1>
-            <p className="text-xl md:text-2xl text-primary mb-2">
+            <p className="text-sm sm:text-lg md:text-xl text-primary mb-0.5 sm:mb-1">
               Website Designer & Developer
             </p>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-xs sm:text-sm md:text-base text-muted-foreground hidden sm:block">
               Graphic Designer | WordPress Specialist | Frontend Developer
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
-            <div className="flex items-center gap-3 p-4 rounded-xl bg-background/30">
-              <Mail className="w-5 h-5 text-primary" />
-              <div>
-                <p className="text-sm text-muted-foreground">Email</p>
-                <p className="font-medium">mochaburi4@gmail.com</p>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4 mt-2 sm:mt-3 md:mt-4">
+            <div className="flex items-center gap-2 p-2 sm:p-3 md:p-4 rounded-md sm:rounded-lg bg-background/30">
+              <Mail className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-primary flex-shrink-0" />
+              <div className="min-w-0 flex-1">
+                <p className="text-xs text-muted-foreground">Email</p>
+                <p className="font-medium text-xs sm:text-sm break-words whitespace-normal">mochaburi4@gmail.com</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 p-4 rounded-xl bg-background/30">
-              <Phone className="w-5 h-5 text-primary" />
-              <div>
-                <p className="text-sm text-muted-foreground">Phone</p>
-                <p className="font-medium">+62 822 4576 7700</p>
+            <div className="flex items-center gap-2 p-2 sm:p-3 md:p-4 rounded-md sm:rounded-lg bg-background/30">
+              <Phone className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-primary flex-shrink-0" />
+              <div className="min-w-0 flex-1">
+                <p className="text-xs text-muted-foreground">Phone</p>
+                <p className="font-medium text-xs sm:text-sm break-words whitespace-normal">+62 822 4576 7700</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 p-4 rounded-xl bg-background/30">
-              <MapPin className="w-5 h-5 text-primary" />
-              <div>
-                <p className="text-sm text-muted-foreground">Location</p>
-                <p className="font-medium">Sidoarjo, East Java, Indonesia</p>
+            <div className="flex items-center gap-2 p-2 sm:p-3 md:p-4 rounded-md sm:rounded-lg bg-background/30 col-span-2 md:col-span-1">
+              <MapPin className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-primary flex-shrink-0" />
+              <div className="min-w-0 flex-1">
+                <p className="text-xs text-muted-foreground">Location</p>
+                <p className="font-medium text-xs sm:text-sm break-words whitespace-normal">Sidoarjo, East Java</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 p-4 rounded-xl bg-background/30">
-              <Calendar className="w-5 h-5 text-primary" />
-              <div>
-                <p className="text-sm text-muted-foreground">Date of Birth</p>
-                <p className="font-medium">July 1st, 1986</p>
+            <div className="flex items-center gap-1 p-1.5 sm:p-2 rounded-md sm:rounded-lg bg-background/30">
+              <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 text-primary flex-shrink-0" />
+              <div className="min-w-0 flex-1">
+                <p className="text-xs text-muted-foreground">Birth</p>
+                <p className="font-medium text-xs break-words whitespace-normal">July 1</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 p-4 rounded-xl bg-background/30">
-              <Heart className="w-5 h-5 text-primary" />
-              <div>
-                <p className="text-sm text-muted-foreground">Status</p>
-                <p className="font-medium">Married</p>
+            <div className="flex items-center gap-2 p-2 sm:p-3 md:p-4 rounded-md sm:rounded-lg bg-background/30">
+              <Heart className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-primary flex-shrink-0" />
+              <div className="min-w-0 flex-1">
+                <p className="text-xs text-muted-foreground">Status</p>
+                <p className="font-medium text-xs sm:text-sm">Married</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 p-4 rounded-xl bg-background/30">
-              <User className="w-5 h-5 text-primary" />
-              <div>
-                <p className="text-sm text-muted-foreground">Nationality</p>
-                <p className="font-medium">Indonesian • Islam</p>
+            <div className="flex items-center gap-2 p-2 sm:p-3 md:p-4 rounded-md sm:rounded-lg bg-background/30">
+              <User className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-primary flex-shrink-0" />
+              <div className="min-w-0 flex-1">
+                <p className="text-xs text-muted-foreground">Nation</p>
+                <p className="font-medium text-xs sm:text-sm">Indo</p>
               </div>
             </div>
-          </div>
 
-          <div className="mt-8 p-6 rounded-xl bg-background/30">
-            <h3 className="text-xl font-bold mb-3 text-primary">Education</h3>
-            <div className="space-y-2">
-              <p className="font-semibold text-lg">Bachelor of Engineering</p>
-              <p className="text-muted-foreground">Industrial Product Design</p>
-              <p className="text-sm">Sepuluh November Institute of Technology (ITS Surabaya)</p>
-              <p className="text-sm text-primary">2003 - 2010 • GPA 3.01/4.00</p>
+            <div className="col-span-2 md:col-span-1 flex items-center gap-2 p-2 sm:p-3 md:p-4 rounded-md sm:rounded-lg bg-background/30">
+              <div className="min-w-0 flex-1">
+                <p className="text-xs text-muted-foreground">Education</p>
+                <div className="flex items-center justify-between gap-2 w-full">
+                  <div className="min-w-0">
+                    <p className="font-semibold text-xs sm:text-sm md:text-base break-words whitespace-normal">Bachelor of Engineering</p>
+                    <p className="text-xs text-muted-foreground break-words whitespace-normal">Industrial Product Design • ITS</p>
+                  </div>
+                  <p className="text-xs sm:text-sm text-primary whitespace-nowrap">2003-2010</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

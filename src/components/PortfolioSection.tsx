@@ -6,75 +6,73 @@ const websites = [
   { name: "Bangun Tata Nusantara", url: "https://www.banguntatanusantara.com" },
   { name: "Priquin", url: "https://www.priquin.com" },
   { name: "Daycare Bintaq", url: "https://www.daycarebintaq.com" },
-  { name: "JGB Properti", url: "https://www.jgbproperti.com" },
+  { name: "Jokam Griya Barokah Properti", url: "https://www.jgbproperti.com" },
   { name: "Kusumo Four Transport", url: "https://www.kusumofourtransport.com" },
   { name: "Naritah Group", url: "https://www.naritahgroup.com" },
   { name: "LGR Apparel", url: "https://www.lgrapparel.com" },
   { name: "Dr. Norman Hadi", url: "https://www.drnormanhadi.ct.ws" },
-  { name: "Dayan Enterprise", url: "https://www.dayangenterpris.net" },
-  { name: "Rans PM", url: "https://www.ranspm.co.id" },
+  { name: "Aryan Dayang Enterprise", url: "https://www.dayangenterpris.net" },
+  { name: "Rans Prima Maritim", url: "https://www.ranspm.co.id" },
   { name: "Sipikan Seri", url: "https://www.sipikanseri.com/" },
 ];
 
 const PortfolioSection = () => {
   return (
-    <section className="snap-section gradient-bg-4 flex items-center justify-center p-4 md:p-8">
-      <div className="container max-w-full mx-auto h-full flex flex-col">
-        <div className="glass-morphism rounded-3xl p-6 md:p-8 flex-1 overflow-hidden flex flex-col">
-          <div className="text-center mb-6 flex-shrink-0">
-            <h2 className="text-3xl md:text-5xl font-bold mb-3 text-glow">
+    <section className="snap-section gradient-bg-4 px-3 pt-16 sm:pt-20 pb-[3vh]">
+      <div className="w-full h-full flex flex-col items-center justify-center overflow-visible max-h-none">
+        <div className="glass-morphism rounded-xl p-4 sm:p-6 md:p-8 w-full max-w-6xl h-auto flex flex-col overflow-visible min-h-[65vh] sm:min-h-[70vh] md:min-h-[75vh]">
+          <div className="text-center mb-2 sm:mb-3 flex-shrink-0">
+            <h2 className="text-lg sm:text-2xl md:text-4xl font-bold mb-0.5 sm:mb-1 text-glow">
               Website Portfolio
             </h2>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-muted-foreground text-xs sm:text-sm md:text-base">
               Professional Websites Developed & Designed
             </p>
           </div>
 
-          <div className="flex-1 horizontal-scroll pb-4">
-            <div className="flex gap-4 min-w-max pr-4">
+          <div className="flex-1 horizontal-scroll pb-1 min-h-0">
+            <div className="flex gap-2 sm:gap-3 min-w-max pr-2 items-stretch">
               {websites.map((site, index) => (
                 <a
                   key={index}
                   href={site.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group w-64"
+                  className="group w-[calc(100vw-3rem)] sm:w-64 md:w-72 flex-shrink-0 h-full"
                 >
                   <div
-                    className="p-6 rounded-2xl bg-background/30 hover:bg-background/50 transition-all duration-300 border border-primary/10 hover:border-primary/30 animate-fade-in-up h-full flex flex-col justify-between"
+                    className="p-2 sm:p-3 md:p-4 rounded-lg sm:rounded-xl bg-background/30 hover:bg-background/50 transition-all duration-300 border border-primary/10 hover:border-primary/30 animate-fade-in-up h-full flex flex-col justify-between"
                     style={{ animationDelay: `${index * 0.05}s` }}
                   >
-                    <div>
-                      <div className="flex items-start justify-between mb-3">
-                        <h3 className="text-lg font-bold group-hover:text-primary transition-colors duration-200">
+                    <div className="min-w-0 flex-1">
+                      <div className="w-full h-20 sm:h-24 md:h-28 mb-2 sm:mb-3 rounded-md bg-background/50 border border-primary/10 flex items-center justify-center">
+                        <img
+                          src={`https://via.placeholder.com/200x100?text=${encodeURIComponent(site.name)}`}
+                          alt={`${site.name} logo`}
+                          className="w-full h-full object-cover rounded-md"
+                        />
+                      </div>
+                      <div className="flex items-start justify-between mb-1 sm:mb-2 gap-1">
+                        <h3 className="text-sm sm:text-base md:text-lg font-bold group-hover:text-primary transition-colors duration-200 break-words flex-1">
                           {site.name}
                         </h3>
-                        <ExternalLink className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors duration-200" />
+                        <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground group-hover:text-primary transition-colors duration-200 flex-shrink-0 mt-0.5" />
                       </div>
-                      <p className="text-sm text-muted-foreground mb-4 truncate">
+                      <p className="text-xs sm:text-sm text-muted-foreground mb-2 truncate">
                         {site.url}
                       </p>
                     </div>
                     <Button
                       variant="outline"
                       size="sm"
-                      className="w-full border-primary/30 hover:bg-primary/10 group-hover:border-primary transition-all duration-200"
+                      className="w-full border-primary/30 hover:bg-primary/10 group-hover:border-primary transition-all duration-200 text-xs sm:text-sm h-8"
                     >
-                      Visit Website
+                      Visit
                     </Button>
                   </div>
                 </a>
               ))}
             </div>
-          </div>
-
-          <div className="mt-4 p-4 rounded-2xl bg-gradient-to-r from-primary/20 to-secondary/20 text-center border border-primary/30 flex-shrink-0">
-            <p className="text-lg mb-2">
-              <span className="text-3xl font-bold text-primary">{websites.length}</span>
-            </p>
-            <p className="text-muted-foreground">
-              Live websites featuring WordPress, custom design, and responsive layouts
-            </p>
           </div>
         </div>
       </div>

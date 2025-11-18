@@ -47,44 +47,46 @@ const experiences = [
 
 const ExperienceSection = () => {
   return (
-    <section className="snap-section gradient-bg-2 flex items-center justify-center p-4 md:p-8">
-      <div className="container max-w-full mx-auto h-full flex flex-col">
-        <div className="glass-morphism rounded-3xl p-6 md:p-8 flex-1 overflow-hidden flex flex-col">
-          <div className="text-center mb-6 flex-shrink-0">
-            <h2 className="text-3xl md:text-5xl font-bold mb-3 text-glow">
+    <section className="snap-section gradient-bg-2 px-3 pt-16 sm:pt-20 pb-[3vh]">
+      <div className="w-full h-full flex flex-col items-center justify-center overflow-visible max-h-none">
+        <div className="glass-morphism rounded-xl p-4 sm:p-6 md:p-8 w-full max-w-6xl h-auto flex flex-col overflow-visible min-h-[60vh] sm:min-h-[65vh] md:min-h-[70vh]">
+          <div className="text-center mb-2 sm:mb-3 flex-shrink-0">
+            <h2 className="text-lg sm:text-2xl md:text-4xl font-bold mb-0.5 sm:mb-1 text-glow">
               Working Experience
             </h2>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-muted-foreground text-xs sm:text-sm md:text-base">
               15+ Years in Design & Development
             </p>
           </div>
 
-          <div className="flex-1 horizontal-scroll pb-4">
-            <div className="flex gap-6 min-w-max pr-4">
+          <div className="flex-1 horizontal-scroll pb-1">
+            <div className="flex gap-2 sm:gap-3 min-w-max pr-2 items-stretch">
               {experiences.map((exp, index) => (
                 <div
                   key={index}
-                  className="p-6 rounded-2xl bg-background/30 hover:bg-background/40 transition-all duration-300 animate-fade-in-up border border-primary/10 w-96 flex-shrink-0"
+                  className="p-2 sm:p-3 md:p-4 rounded-lg sm:rounded-xl bg-background/30 hover:bg-background/40 transition-all duration-300 animate-fade-in-up border border-primary/10 w-[calc(100vw-3rem)] sm:w-80 md:w-96 flex-shrink-0 h-full flex flex-col justify-between"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-xl bg-primary/20 flex-shrink-0">
-                      <Briefcase className="w-6 h-6 text-primary" />
+                  <div className="flex items-start gap-2 sm:gap-3">
+                    <div className="p-1.5 sm:p-2 rounded-lg bg-primary/20 flex-shrink-0">
+                      <Briefcase className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                     </div>
-                    <div className="flex-1">
-                      <div className="flex flex-col mb-2">
-                        <h3 className="text-xl font-bold">{exp.company}</h3>
-                        <span className="text-sm text-primary font-medium mt-1">
+                    <div className="flex-1 min-w-0 flex flex-col">
+                      <div className="flex flex-col mb-1">
+                        <h3 className="text-base sm:text-lg md:text-xl font-bold break-words">{exp.company}</h3>
+                        <span className="text-xs sm:text-sm md:text-base text-primary font-medium mt-0.5">
                           {exp.period}
                         </span>
                       </div>
-                      <p className="text-secondary font-semibold mb-1">{exp.role}</p>
-                      <p className="text-sm text-muted-foreground mb-3 italic">
-                        {exp.description}
-                      </p>
-                      <p className="text-sm leading-relaxed text-foreground/80">
-                        {exp.responsibilities}
-                      </p>
+                      <div className="flex-1">
+                        <p className="text-sm sm:text-base md:text-lg text-secondary font-semibold mb-1">{exp.role}</p>
+                        <p className="text-xs sm:text-sm md:text-base text-muted-foreground mb-2 italic">
+                          {exp.description}
+                        </p>
+                        <p className="text-xs sm:text-sm md:text-base leading-relaxed text-foreground/80">
+                          {exp.responsibilities}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
