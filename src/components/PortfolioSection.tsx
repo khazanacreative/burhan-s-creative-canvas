@@ -3,15 +3,8 @@ import { Button } from "@/components/ui/button";
 
 const websites = [
   { name: "Ace Maritime", url: "https://www.acemaritime.co.id" },
-  { name: "Bangun Tata Nusantara", url: "https://www.banguntatanusantara.com" },
-  { name: "Priquin", url: "https://www.priquin.com" },
-  { name: "Daycare Bintaq", url: "https://www.daycarebintaq.com" },
-  { name: "Jokam Griya Barokah Properti", url: "https://www.jgbproperti.com" },
-  { name: "Kusumo Four Transport", url: "https://www.kusumofourtransport.com" },
   { name: "Naritah Group", url: "https://www.naritahgroup.com" },
-  { name: "LGR Apparel", url: "https://www.lgrapparel.com" },
   { name: "Dr. Norman Hadi", url: "https://www.drnormanhadi.ct.ws" },
-  { name: "Aryan Dayang Enterprise", url: "https://www.dayangenterpris.net" },
   { name: "Rans Prima Maritim", url: "https://www.ranspm.co.id" },
   { name: "Sipikan Seri", url: "https://www.sipikanseri.com/" },
 ];
@@ -81,3 +74,4 @@ const PortfolioSection = () => {
 };
 
 export default PortfolioSection;
+
