@@ -1,4 +1,4 @@
-import { LogIn, LogOut, Edit, X } from 'lucide-react';
+import { Settings, LogOut, Edit, X } from 'lucide-react';
 import { Button } from './ui/button';
 import { useAuth } from '@/contexts/AuthContext';
 import { useState } from 'react';
@@ -74,7 +74,7 @@ const FloatingLoginButton = () => {
             className="rounded-full h-14 w-14 shadow-lg"
             onClick={() => setShowDialog(true)}
           >
-            <LogIn className="h-6 w-6" />
+            <Settings className="h-6 w-6" />
           </Button>
         )}
       </div>

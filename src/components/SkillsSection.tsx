@@ -1,46 +1,62 @@
-import { Code, Palette, Video, FileText, Globe, Cpu, ChevronLeft, ChevronRight } from "lucide-react";
+import { Code, Palette, Video, FileText, Globe, Cpu, ChevronLeft, ChevronRight, Plus, Trash2 } from "lucide-react";
 import { useRef } from "react";
+import { useAuth } from "@/contexts/AuthContext";
+import EditableText from "./EditableText";
+import { useEditableArray } from "@/hooks/useEditableArray";
+import { Button } from "./ui/button";
 
-const skillCategories = [
+interface SkillCategory {
+  category: string;
+  icon: string;
+  skills: string[];
+}
+
+const iconMap: Record<string, typeof Code> = {
+  Code, Palette, Video, FileText, Globe, Cpu
+};
+
+const defaultSkillCategories: SkillCategory[] = [
   {
     category: "Graphic Design Software",
-    icon: Palette,
+    icon: "Palette",
     skills: ["Adobe Photoshop", "Adobe Illustrator", "CorelDRAW", "Inkscape"],
   },
   {
     category: "Vector Design",
-    icon: Palette,
+    icon: "Palette",
     skills: ["Illustrator", "CorelDRAW", "Inkscape"],
   },
   {
     category: "3D Software",
-    icon: Cpu,
+    icon: "Cpu",
     skills: ["SketchUp", "3ds Max", "Blender", "AutoCAD"],
   },
   {
     category: "Video Editing",
-    icon: Video,
+    icon: "Video",
     skills: ["Adobe Premiere", "After Effects", "Final Cut Pro"],
   },
   {
     category: "Office Software",
-    icon: FileText,
+    icon: "FileText",
     skills: ["Microsoft Office", "Google Workspace", "LibreOffice"],
   },
   {
     category: "Web Development",
-    icon: Globe,
+    icon: "Globe",
     skills: ["WordPress", "Elementor", "WooCommerce", "Custom Themes"],
   },
   {
     category: "Coding",
-    icon: Code,
+    icon: "Code",
     skills: ["HTML", "CSS", "JavaScript", "React", "Next.js"],
   },
 ];
 
 const SkillsSection = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const { isEditMode } = useAuth();
+  const { items: skillCategories, addItem, updateItem, deleteItem } = useEditableArray<SkillCategory>('skills', defaultSkillCategories);
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
@@ -50,6 +66,19 @@ const SkillsSection = () => {
         behavior: 'smooth'
       });
     }
+  };
+
+  const handleAddCategory = () => {
+    addItem({
+      category: "New Category",
+      icon: "Code",
+      skills: ["Skill 1", "Skill 2"]
+    });
+  };
+
+  const updateField = (index: number, field: keyof SkillCategory, value: any) => {
+    const cat = skillCategories[index];
+    updateItem(index, { ...cat, [field]: value });
   };
 
   return (
@@ -68,7 +97,7 @@ const SkillsSection = () => {
           <div ref={scrollRef} className="flex-1 horizontal-scroll pb-1 mb-2 min-h-0">
             <div className="flex gap-2 sm:gap-3 min-w-max pr-2 items-stretch">
               {skillCategories.map((category, index) => {
-                const Icon = category.icon;
+                const Icon = iconMap[category.icon] || Code;
                 return (
                   <div
                     key={index}
@@ -79,7 +108,12 @@ const SkillsSection = () => {
                       <div className="p-1.5 sm:p-2 rounded-md sm:rounded-lg bg-primary/20 flex-shrink-0">
                         <Icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5 text-primary" />
                       </div>
-                      <h3 className="text-sm sm:text-base md:text-lg font-bold break-words">{category.category}</h3>
+                      <EditableText
+                        value={category.category}
+                        onChange={(v) => updateField(index, 'category', v)}
+                        as="h3"
+                        className="text-sm sm:text-base md:text-lg font-bold break-words"
+                      />
                     </div>
                     <div className="flex-1 flex items-start">
                       <div className="flex flex-wrap gap-1.5 sm:gap-2">
@@ -93,6 +127,17 @@ const SkillsSection = () => {
                         ))}
                       </div>
                     </div>
+                    {isEditMode && (
+                      <Button
+                        size="sm"
+                        variant="destructive"
+                        className="mt-2"
+                        onClick={() => deleteItem(index)}
+                      >
+                        <Trash2 className="h-4 w-4 mr-1" />
+                        Delete
+                      </Button>
+                    )}
                   </div>
                 );
               })}
@@ -100,6 +145,16 @@ const SkillsSection = () => {
           </div>
 
           <div className="flex items-center justify-center gap-2">
+            {isEditMode && (
+              <Button
+                size="sm"
+                onClick={handleAddCategory}
+                className="mr-2"
+              >
+                <Plus className="h-4 w-4 mr-1" />
+                Add Category
+              </Button>
+            )}
             <button
               onClick={() => scroll('left')}
               className="p-1 rounded-md bg-primary/20 hover:bg-primary/30 transition-colors"
