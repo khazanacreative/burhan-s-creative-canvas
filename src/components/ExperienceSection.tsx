@@ -1,7 +1,19 @@
-import { Briefcase, ChevronLeft, ChevronRight } from "lucide-react";
+import { Briefcase, ChevronLeft, ChevronRight, Plus, Trash2 } from "lucide-react";
 import { useRef } from "react";
+import { useAuth } from "@/contexts/AuthContext";
+import EditableText from "./EditableText";
+import { useEditableArray } from "@/hooks/useEditableArray";
+import { Button } from "./ui/button";
 
-const experiences = [
+interface Experience {
+  company: string;
+  period: string;
+  role: string;
+  description: string;
+  responsibilities: string;
+}
+
+const defaultExperiences: Experience[] = [
   {
     company: "CV. Hexa Integra Mandiri",
     period: "2021 - Present",
@@ -48,6 +60,8 @@ const experiences = [
 
 const ExperienceSection = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const { isEditMode } = useAuth();
+  const { items: experiences, addItem, updateItem, deleteItem } = useEditableArray<Experience>('experiences', defaultExperiences);
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
@@ -57,6 +71,21 @@ const ExperienceSection = () => {
         behavior: 'smooth'
       });
     }
+  };
+
+  const handleAddExperience = () => {
+    addItem({
+      company: "New Company",
+      period: "Year",
+      role: "Role",
+      description: "Description",
+      responsibilities: "Responsibilities"
+    });
+  };
+
+  const updateField = (index: number, field: keyof Experience, value: string) => {
+    const exp = experiences[index];
+    updateItem(index, { ...exp, [field]: value });
   };
 
   return (
@@ -81,33 +110,72 @@ const ExperienceSection = () => {
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <div className="flex items-start gap-2 sm:gap-3">
-                    <div className="p-1.5 sm:p-2 rounded-lg bg-primary/20 flex-shrink-0">
+                    <div className="p-1.5 sm:p-2 rounded-md bg-primary/20 flex-shrink-0">
                       <Briefcase className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                     </div>
-                    <div className="flex-1 min-w-0 flex flex-col">
-                      <div className="flex flex-col mb-1">
-                        <h3 className="text-base sm:text-lg md:text-xl font-bold break-words">{exp.company}</h3>
-                        <span className="text-xs sm:text-sm md:text-base text-primary font-medium mt-0.5">
-                          {exp.period}
-                        </span>
-                      </div>
-                      <div className="flex-1">
-                        <p className="text-sm sm:text-base md:text-lg text-secondary font-semibold mb-1">{exp.role}</p>
-                        <p className="text-xs sm:text-sm md:text-base text-muted-foreground mb-2 italic">
-                          {exp.description}
-                        </p>
-                        <p className="text-xs sm:text-sm md:text-base leading-relaxed text-foreground/80">
-                          {exp.responsibilities}
-                        </p>
-                      </div>
+                    <div className="flex-1 min-w-0">
+                      <EditableText
+                        value={exp.company}
+                        onChange={(v) => updateField(index, 'company', v)}
+                        as="h3"
+                        className="text-sm sm:text-base md:text-lg font-bold mb-0.5 sm:mb-1 break-words"
+                      />
+                      <EditableText
+                        value={exp.period}
+                        onChange={(v) => updateField(index, 'period', v)}
+                        as="p"
+                        className="text-xs sm:text-sm text-primary mb-1 sm:mb-2"
+                      />
                     </div>
                   </div>
+                  <div className="space-y-1 sm:space-y-1.5 flex-1">
+                    <EditableText
+                      value={exp.role}
+                      onChange={(v) => updateField(index, 'role', v)}
+                      as="p"
+                      className="text-xs sm:text-sm font-semibold"
+                    />
+                    <EditableText
+                      value={exp.description}
+                      onChange={(v) => updateField(index, 'description', v)}
+                      as="p"
+                      className="text-xs sm:text-sm text-muted-foreground"
+                    />
+                    <EditableText
+                      value={exp.responsibilities}
+                      onChange={(v) => updateField(index, 'responsibilities', v)}
+                      multiline
+                      as="p"
+                      className="text-xs sm:text-sm text-muted-foreground/80 leading-relaxed"
+                    />
+                  </div>
+                  {isEditMode && (
+                    <Button
+                      size="sm"
+                      variant="destructive"
+                      className="mt-2"
+                      onClick={() => deleteItem(index)}
+                    >
+                      <Trash2 className="h-4 w-4 mr-1" />
+                      Delete
+                    </Button>
+                  )}
                 </div>
               ))}
             </div>
           </div>
 
           <div className="flex items-center justify-center gap-2">
+            {isEditMode && (
+              <Button
+                size="sm"
+                onClick={handleAddExperience}
+                className="mr-2"
+              >
+                <Plus className="h-4 w-4 mr-1" />
+                Add Experience
+              </Button>
+            )}
             <button
               onClick={() => scroll('left')}
               className="p-1 rounded-md bg-primary/20 hover:bg-primary/30 transition-colors"

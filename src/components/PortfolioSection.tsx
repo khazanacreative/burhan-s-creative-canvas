@@ -1,8 +1,16 @@
-import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import { ExternalLink, ChevronLeft, ChevronRight, Plus, Trash2 } from "lucide-react";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/contexts/AuthContext";
+import EditableText from "./EditableText";
+import { useEditableArray } from "@/hooks/useEditableArray";
 
-const websites = [
+interface Website {
+  name: string;
+  url: string;
+}
+
+const defaultWebsites: Website[] = [
   { name: "Ace Maritime", url: "https://www.acemaritime.co.id" },
   { name: "Naritah Group", url: "https://www.naritahgroup.com" },
   { name: "Dr. Norman Hadi", url: "https://www.drnormanhadi.ct.ws" },
@@ -12,6 +20,8 @@ const websites = [
 
 const PortfolioSection = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const { isEditMode } = useAuth();
+  const { items: websites, addItem, updateItem, deleteItem } = useEditableArray<Website>('portfolio', defaultWebsites);
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
@@ -21,6 +31,18 @@ const PortfolioSection = () => {
         behavior: 'smooth'
       });
     }
+  };
+
+  const handleAddWebsite = () => {
+    addItem({
+      name: "New Website",
+      url: "https://example.com"
+    });
+  };
+
+  const updateField = (index: number, field: keyof Website, value: string) => {
+    const site = websites[index];
+    updateItem(index, { ...site, [field]: value });
   };
 
   return (
@@ -48,24 +70,57 @@ const PortfolioSection = () => {
                     <div className="p-2 sm:p-3 rounded-lg bg-primary/20 mb-2 sm:mb-3">
                       <ExternalLink className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
                     </div>
-                    <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2">{website.name}</h3>
-                    <p className="text-xs sm:text-sm md:text-base text-muted-foreground break-all">{website.url}</p>
+                    <EditableText
+                      value={website.name}
+                      onChange={(v) => updateField(index, 'name', v)}
+                      as="h3"
+                      className="text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2"
+                    />
+                    <EditableText
+                      value={website.url}
+                      onChange={(v) => updateField(index, 'url', v)}
+                      as="p"
+                      className="text-xs sm:text-sm md:text-base text-muted-foreground break-all"
+                    />
                   </div>
-                  <Button
-                    className="w-full bg-primary/20 hover:bg-primary/30 text-primary border border-primary/30"
-                    asChild
-                  >
-                    <a href={website.url} target="_blank" rel="noopener noreferrer">
-                      Visit Website
-                      <ExternalLink className="w-4 h-4 ml-2" />
-                    </a>
-                  </Button>
+                  <div className="space-y-2">
+                    <Button
+                      className="w-full bg-primary/20 hover:bg-primary/30 text-primary border border-primary/30"
+                      asChild
+                    >
+                      <a href={website.url} target="_blank" rel="noopener noreferrer">
+                        Visit Website
+                        <ExternalLink className="w-4 h-4 ml-2" />
+                      </a>
+                    </Button>
+                    {isEditMode && (
+                      <Button
+                        size="sm"
+                        variant="destructive"
+                        className="w-full"
+                        onClick={() => deleteItem(index)}
+                      >
+                        <Trash2 className="h-4 w-4 mr-1" />
+                        Delete
+                      </Button>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
           </div>
 
           <div className="flex items-center justify-center gap-2">
+            {isEditMode && (
+              <Button
+                size="sm"
+                onClick={handleAddWebsite}
+                className="mr-2"
+              >
+                <Plus className="h-4 w-4 mr-1" />
+                Add Website
+              </Button>
+            )}
             <button
               onClick={() => scroll('left')}
               className="p-1 rounded-md bg-primary/20 hover:bg-primary/30 transition-colors"
@@ -88,4 +143,3 @@ const PortfolioSection = () => {
 };
 
 export default PortfolioSection;
-

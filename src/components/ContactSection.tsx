@@ -1,6 +1,15 @@
 import { Mail, Phone, MapPin, Linkedin, Instagram, Facebook } from "lucide-react";
+import EditableText from "./EditableText";
+import { useEditableContent } from "@/hooks/useEditableContent";
 
 const ContactSection = () => {
+  const [email, setEmail] = useEditableContent('contact_email', 'mochaburi4@gmail.com');
+  const [phone, setPhone] = useEditableContent('contact_phone', '+62 822 4576 7700');
+  const [location, setLocation] = useEditableContent('contact_location', 'Sidoarjo, East Java, Indonesia');
+  const [facebook, setFacebook] = useEditableContent('contact_facebook', 'https://www.facebook.com/abu.fazana/');
+  const [instagram, setInstagram] = useEditableContent('contact_instagram', 'https://www.instagram.com/mo.bur.is/');
+  const [linkedin, setLinkedin] = useEditableContent('contact_linkedin', 'https://www.linkedin.com/in/mochamad-burhan-islami-a9959b33/');
+
   return (
     <section className="snap-section gradient-bg-5 px-3 pt-16 sm:pt-20 pb-[3vh]">
       <div className="w-full h-full flex items-center justify-center">
@@ -16,7 +25,7 @@ const ContactSection = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 mb-2 sm:mb-3">
             <a
-              href="mailto:mochaburi4@gmail.com"
+              href={`mailto:${email}`}
               className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-md sm:rounded-lg bg-background/30 hover:bg-background/50 transition-all duration-300 border border-primary/10 hover:border-primary/30 group"
             >
               <div className="p-2 sm:p-3 rounded-md bg-primary/20 group-hover:bg-primary/30 transition-colors duration-200 flex-shrink-0">
@@ -24,14 +33,17 @@ const ContactSection = () => {
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-xs sm:text-sm text-muted-foreground">Email</p>
-                <p className="text-sm sm:text-base md:text-lg font-semibold group-hover:text-primary transition-colors duration-200 break-words whitespace-normal">
-                  mochaburi4@gmail.com
-                </p>
+                <EditableText
+                  value={email}
+                  onChange={setEmail}
+                  as="p"
+                  className="text-sm sm:text-base md:text-lg font-semibold group-hover:text-primary transition-colors duration-200 break-words whitespace-normal"
+                />
               </div>
             </a>
 
             <a
-              href="tel:+6282245767700"
+              href={`tel:${phone.replace(/\s/g, '')}`}
               className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-md sm:rounded-lg bg-background/30 hover:bg-background/50 transition-all duration-300 border border-primary/10 hover:border-primary/30 group"
             >
               <div className="p-2 sm:p-3 rounded-md bg-secondary/20 group-hover:bg-secondary/30 transition-colors duration-200 flex-shrink-0">
@@ -39,9 +51,12 @@ const ContactSection = () => {
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-xs sm:text-sm text-muted-foreground">Phone</p>
-                <p className="text-sm sm:text-base md:text-lg font-semibold group-hover:text-secondary transition-colors duration-200 break-words whitespace-normal">
-                  +62 822 4576 7700
-                </p>
+                <EditableText
+                  value={phone}
+                  onChange={setPhone}
+                  as="p"
+                  className="text-sm sm:text-base md:text-lg font-semibold group-hover:text-secondary transition-colors duration-200 break-words whitespace-normal"
+                />
               </div>
             </a>
 
@@ -51,14 +66,17 @@ const ContactSection = () => {
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-xs sm:text-sm text-muted-foreground">Location</p>
-                <p className="text-sm sm:text-base md:text-lg font-semibold break-words whitespace-normal">
-                  Sidoarjo, East Java, Indonesia
-                </p>
+                <EditableText
+                  value={location}
+                  onChange={setLocation}
+                  as="p"
+                  className="text-sm sm:text-base md:text-lg font-semibold break-words whitespace-normal"
+                />
               </div>
             </div>
 
             <a
-              href="https://www.facebook.com/abu.fazana/"
+              href={facebook}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-md sm:rounded-lg bg-background/30 hover:bg-background/50 transition-all duration-300 border border-primary/10 hover:border-primary/30 group"
@@ -68,14 +86,19 @@ const ContactSection = () => {
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-xs sm:text-sm text-muted-foreground">Facebook</p>
-                <p className="text-sm sm:text-base md:text-lg font-semibold group-hover:text-primary transition-colors duration-200 break-words whitespace-normal">
-                  Mochamad Burhan Islami
-                </p>
+                <EditableText
+                  value={facebook}
+                  onChange={setFacebook}
+                  as="p"
+                  className="text-sm sm:text-base md:text-lg font-semibold group-hover:text-primary transition-colors duration-200 break-all whitespace-normal"
+                />
               </div>
             </a>
+          </div>
 
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3">
             <a
-              href="https://www.instagram.com/mocha.burhan/"
+              href={instagram}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-md sm:rounded-lg bg-background/30 hover:bg-background/50 transition-all duration-300 border border-primary/10 hover:border-primary/30 group"
@@ -85,14 +108,17 @@ const ContactSection = () => {
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-xs sm:text-sm text-muted-foreground">Instagram</p>
-                <p className="text-sm sm:text-base md:text-lg font-semibold group-hover:text-secondary transition-colors duration-200 break-words whitespace-normal">
-                  @mocha.burhan
-                </p>
+                <EditableText
+                  value={instagram}
+                  onChange={setInstagram}
+                  as="p"
+                  className="text-sm sm:text-base md:text-lg font-semibold group-hover:text-secondary transition-colors duration-200 break-all whitespace-normal"
+                />
               </div>
             </a>
 
             <a
-              href="https://www.linkedin.com/in/mochamad-burhan-islami-8719ba57/"
+              href={linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-md sm:rounded-lg bg-background/30 hover:bg-background/50 transition-all duration-300 border border-primary/10 hover:border-primary/30 group"
@@ -102,17 +128,14 @@ const ContactSection = () => {
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-xs sm:text-sm text-muted-foreground">LinkedIn</p>
-                <p className="text-sm sm:text-base md:text-lg font-semibold group-hover:text-accent transition-colors duration-200 break-words whitespace-normal">
-                  Mochamad Burhan Islami
-                </p>
+                <EditableText
+                  value={linkedin}
+                  onChange={setLinkedin}
+                  as="p"
+                  className="text-sm sm:text-base md:text-lg font-semibold group-hover:text-accent transition-colors duration-200 break-all whitespace-normal"
+                />
               </div>
             </a>
-          </div>
-
-          <div className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-primary/20 text-center">
-            <p className="text-xs sm:text-sm text-muted-foreground">
-              © 2025 Mochamad Burhan Islami, ST
-            </p>
           </div>
         </div>
       </div>
