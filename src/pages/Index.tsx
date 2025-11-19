@@ -7,6 +7,7 @@ import PortfolioSection from "@/components/PortfolioSection";
 import ContactSection from "@/components/ContactSection";
 import AuroraBackground from "@/components/AuroraBackground";
 import WaveTransition from "@/components/WaveTransition";
+import FloatingLoginButton from "@/components/FloatingLoginButton";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState(0);
@@ -71,6 +72,7 @@ const Index = () => {
       <AuroraBackground />
       <WaveTransition trigger={waveTransitionTrigger} />
       <Navigation activeSection={activeSection} onNavigate={handleNavigate} />
+      <FloatingLoginButton />
       
       <div ref={containerRef} className="snap-container" style={{ zIndex: 5, position: 'relative' }}>
         <div ref={(el) => (sectionRefs.current[0] = el)} className={`section ${activeSection === 0 ? 'active' : ''}`}>
